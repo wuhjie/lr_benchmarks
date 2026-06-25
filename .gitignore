@@ -15,3 +15,8 @@ pasa-dataset/.cache/
 
 # Large dataset blob — exceeds GitHub 100MB limit (2.3GB)
 pasa-dataset/paper_database/cs_paper_2nd.zip
+
+# LitSearch HF cache + large corpus parquet shards (>100MB each)
+litsearch-dataset/.cache/
+litsearch-dataset/corpus_clean/
+litsearch-dataset/corpus_s2orc/

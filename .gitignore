@@ -9,3 +9,9 @@ venv/
 
 # Local Claude settings
 .claude/settings.local.json
+
+# HuggingFace download cache
+pasa-dataset/.cache/
+
+# Large dataset blob — exceeds GitHub 100MB limit (2.3GB)
+pasa-dataset/paper_database/cs_paper_2nd.zip

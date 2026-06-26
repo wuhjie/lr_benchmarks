@@ -20,3 +20,9 @@ pasa-dataset/paper_database/cs_paper_2nd.zip
 litsearch-dataset/.cache/
 litsearch-dataset/corpus_clean/
 litsearch-dataset/corpus_s2orc/
+
+# AutoResearchBench HF cache
+autoresearchbench-dataset/.cache/
+
+# Decrypted AutoResearchBench — upstream asks not to repost plaintext Q&A online
+autoresearchbench-dataset/AutoResearchBench.jsonl

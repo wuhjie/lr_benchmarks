@@ -15,11 +15,13 @@ The purpose of this repository is not to propose a new benchmark, and these benc
 
 Repository Structure
 
+'''
 LR_BENCHMARKS/
 ├── autoresearch/        # AutoResearchBench
 ├── litsearch-dataset/   # LitSearch dataset
 ├── pasa-dataset/        # PaSa dataset
 └── scholarquest/        # ScholarQuest
+'''
 
 Each folder contains a fetched copy of the corresponding benchmark repository or dataset. The folders are kept close to their upstream versions.
 

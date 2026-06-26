@@ -2,26 +2,17 @@
 
 ## Overview
 
-This repository groups four existing benchmarks related to **literature retrieval, academic
-paper search, scholarly discovery, and research-agent evaluation**. It is intended as a
-*benchmark landscape* repository: a place to collect, categorise, and compare adjacent
-benchmarks, rather than to introduce a new one.
+A curated collection of existing benchmarks related to **literature retrieval, academic paper
+search, scholarly discovery, and research-agent evaluation**. It gathers several adjacent
+benchmarks into one place and adds a categorisation and comparison layer, so their tasks,
+inputs, outputs, and evaluation styles can be examined side by side.
 
-To be explicit:
-
-- This is **not** a new benchmark.
-- This is **not** the final or direct benchmark for CiteClaw.
-- The four benchmark folders are **fetched copies** of their original repositories / datasets
-  and are treated as upstream snapshots.
-- The added value of this repository is the **categorisation and comparison layer** provided
-  by the top-level documentation files.
-
-The accompanying documents are:
+The four benchmark folders are fetched copies of their original repositories / datasets and are
+kept as upstream snapshots. The added value of this repository is the categorisation and
+comparison provided by the top-level documentation:
 
 - [`benchmark_taxonomy.md`](benchmark_taxonomy.md) — task-type and input/output taxonomy.
 - [`benchmark_comparison.md`](benchmark_comparison.md) — detailed, per-benchmark comparison.
-- [`relation_to_citeclaw.md`](relation_to_citeclaw.md) — how the benchmarks relate to
-  CiteClaw-style literature expansion, and how they fall short of it.
 
 ## Repository Structure
 
@@ -121,17 +112,17 @@ Collecting these benchmarks together is more useful than a list of links because
 - It separates **query-to-paper retrieval** (LitSearch), **scholarly / comprehensive search**
   (PaSa), **paper-search agents** (ScholarQuest), and **autonomous research agents**
   (AutoResearchBench).
-- It helps identify which benchmarks may be **adaptable** for CiteClaw-like literature
-  expansion, and which only partially overlap.
-- By mapping the space, it makes **gaps** more visible — in particular, the absence of a
-  benchmark for topic + seed-paper + corpus-based literature expansion.
+- It helps identify which benchmarks may be **adaptable** for literature-expansion settings,
+  and which only partially overlap.
+- By mapping the space, it makes **gaps** more visible — for example, the absence of a
+  benchmark built around topic + seed papers + an existing corpus as the conditioning input.
 
 ## How to Use This Repository
 
 - Use the **original benchmark folders** for exact code, data, and setup instructions; their
   in-folder documentation is authoritative.
-- Use the **top-level documentation files** (`benchmark_taxonomy.md`,
-  `benchmark_comparison.md`, `relation_to_citeclaw.md`) for comparison and interpretation.
+- Use the **top-level documentation files** (`benchmark_taxonomy.md`, `benchmark_comparison.md`)
+  for comparison and interpretation.
 - Check the **upstream repositories** linked above for the most recent versions; the copies
   here are point-in-time snapshots.
 

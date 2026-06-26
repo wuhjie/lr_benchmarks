@@ -1,0 +1,6 @@
+scholarquest/BenchmarkConstruction/AnswerFinding/datasets/pasa_batch_unique_queries.jsonl filter=lfs diff=lfs merge=lfs -text
+scholarquest/BenchmarkConstruction/AnswerFinding_v2/datasets/pasa_batch_unique_queries.jsonl filter=lfs diff=lfs merge=lfs -text
+scholarquest/BenchmarkConstruction/QueryGeneration/topic_seeds_stratified.jsonl filter=lfs diff=lfs merge=lfs -text
+scholarquest/BenchmarkConstruction/SeedGeneration/GenerateTopicSeed/topic_seeds_stratified.jsonl filter=lfs diff=lfs merge=lfs -text
+scholarquest/datasets/ScholarQuest.jsonl filter=lfs diff=lfs merge=lfs -text
+scholarquest/datasets/query_metadata.jsonl filter=lfs diff=lfs merge=lfs -text

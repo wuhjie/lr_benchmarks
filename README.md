@@ -2,62 +2,124 @@
 
 ## Overview
 
-This repository collects and compares existing benchmarks related to literature
-retrieval, scholarly paper search, paper-set discovery, and research-agent evaluation.
-It is intended as a benchmark landscape repository. The goal is to make nearby
-evaluation settings easier to compare, especially in terms of task formulation,
-input/output format, domain coverage, and evaluation style.
+This repository surveys benchmarks, datasets, and systems related to literature
+retrieval, scholarly paper search, paper-set discovery, Boolean query generation,
+systematic-review automation, and research-agent evaluation.
 
-This repository does not propose a new benchmark. It records what has been surveyed,
-how these benchmarks differ in task formulation and evaluation style, and where they
-sit relative to one another in the literature-search landscape.
+The goal is not to propose a new benchmark or to rank existing systems. Instead, the
+repository organises nearby evaluation settings so they can be compared by:
+
+- task formulation
+- input and output format
+- corpus and domain coverage
+- supervision / annotation style
+- evaluation metrics
+- whether the benchmark evaluates retrieval, screening, synthesis, or agentic search
+
+The repository includes a small number of fetched benchmark snapshots, but its main
+purpose is broader: to provide a structured landscape of existing evaluation resources
+for literature search and paper discovery.
 
 ## Repository Structure
 
 ```text
 LR_BENCHMARKS/
-├── autoresearch/         # AutoResearchBench (fetched snapshot)
-├── litsearch-dataset/    # LitSearch (fetched snapshot)
-├── pasa-dataset/         # PaSa (fetched snapshot)
-├── scholarquest/         # ScholarQuest (fetched snapshot)
-├── benchmark_taxonomy.md     # consolidated categorisation of the four benchmarks
-└── benchmark_comparison.md   # detailed per-benchmark comparison + landscape survey
+├── autoresearch/              # AutoResearchBench fetched snapshot
+├── litsearch-dataset/         # LitSearch fetched snapshot
+├── pasa-dataset/              # PaSa fetched snapshot
+├── scholarquest/              # ScholarQuest fetched snapshot
+├── benchmark_taxonomy.md      # taxonomy of included benchmark snapshots
+├── benchmark_comparison.md    # detailed comparison of included benchmarks
+├── boolean_query_generation.md # Boolean query generation methods and datasets
+├── benchmark_landscape.md     # broader benchmark / dataset landscape
+└── system_landscape.md        # adjacent systems, products, and evaluation styles
 ```
 
-Each benchmark folder contains a fetched copy of the corresponding upstream
-repository or dataset, kept close to its upstream version.
+The fetched benchmark folders are kept close to their upstream versions. The added
+value of this repository is the surrounding categorisation and comparison documents.
 
-## Included Benchmarks
+## What This Repository Covers
+
+This repository covers three related but distinct areas.
+
+### 1. Literature retrieval and paper-search benchmarks
+
+These benchmarks evaluate whether a system can retrieve papers from a topic, query,
+research question, or search intent.
+
+Examples include:
 
 | Benchmark | Main focus | Typical input | Typical output |
 | --- | --- | --- | --- |
-| **AutoResearchBench** | Autonomous research-agent evaluation | Research question / condition | Target paper (Deep) or paper set (Wide) |
-| **LitSearch** | Query-to-paper retrieval | Natural-language query | Ranked papers / gold paper IDs |
-| **PaSa** | Comprehensive academic paper search | Scholarly search query | Set of relevant papers |
-| **ScholarQuest** | Paper-search agent / set retrieval | Paper-search query | Set of relevant arXiv IDs |
+| AutoResearchBench | Autonomous research-agent evaluation | Research question / condition | Target paper or paper set |
+| LitSearch | Query-to-paper retrieval | Natural-language query | Ranked papers / gold paper IDs |
+| PaSa | Comprehensive academic paper search | Scholarly search query | Set of relevant papers |
+| ScholarQuest | Paper-search agent / set retrieval | Paper-search query | Set of relevant arXiv IDs |
+
+### 2. Boolean query generation and systematic-review search datasets
+
+This line of work focuses on generating, refining, or evaluating search strategies,
+especially Boolean queries for systematic reviews.
+
+Examples include:
+
+| Dataset / benchmark | Main focus |
+| --- | --- |
+| CLEF TAR 2017 / 2018 | Biomedical technology-assisted review and systematic-review retrieval |
+| CLEF 2019 DTA / Intervention | Diagnostic-test and intervention review retrieval |
+| Seed Collection | Seed-study-based systematic-review search |
+| AutoBool-65K | Large-scale Boolean query generation |
+| SR4CS | Systematic-review search in computer science |
+| Literature Search Sandbox | Natural-language review description to Boolean search generation |
+
+### 3. Adjacent literature-review systems and products
+
+The repository also records nearby systems and products, such as academic search
+engines, AI literature review assistants, citation graph tools, screening platforms,
+and scientific QA systems. These systems are not all benchmarks, but they are useful
+for understanding how evaluation differs across retrieval, screening, synthesis, and
+workflow automation.
+
+Examples include Elicit, Consensus, Scite, ResearchRabbit, Litmaps, Connected Papers,
+Semantic Scholar, OpenAlex, Rayyan, Covidence, ASReview, PaperQA, OpenScholar, and
+related tools.
 
 ## Comparison Documents
 
-- [`benchmark_taxonomy.md`](benchmark_taxonomy.md) — a single consolidated table that
-  categorises the four benchmarks by task formulation, input/output format, corpus,
-  evaluation style, and domain coverage, with supporting notes.
-- [`benchmark_comparison.md`](benchmark_comparison.md) — detailed per-benchmark
-  comparison, plus a broader landscape survey of adjacent benchmarks, datasets, and
-  systems.
+- [`benchmark_taxonomy.md`](benchmark_taxonomy.md) — categorises the fetched benchmark
+  snapshots by task formulation, input/output format, corpus, evaluation style, and
+  domain coverage.
+- [`benchmark_comparison.md`](benchmark_comparison.md) — provides a detailed comparison
+  of the included benchmark snapshots and discusses how they relate to broader
+  paper-search and research-agent evaluation settings.
+- [`boolean_query_generation.md`](boolean_query_generation.md) — summarises automated
+  Boolean query generation and refinement methods, including the datasets and evaluation
+  protocols used in prior work.
+- [`benchmark_landscape.md`](benchmark_landscape.md) — summarises broader datasets and
+  benchmarks for literature search, systematic-review retrieval, paper recommendation,
+  screening, and scientific QA.
+- [`system_landscape.md`](system_landscape.md) — summarises adjacent research systems,
+  products, and startups, with emphasis on their task scope, main output, and public
+  evaluation style.
 
 ## Main Takeaway
 
-The included benchmarks are adjacent but not equivalent. They span a spectrum from
-clean query-to-paper retrieval (LitSearch), through recall-oriented scholarly and
-agentic search (PaSa, ScholarQuest), to autonomous multi-step research
-(AutoResearchBench). Domain coverage is concentrated in CS/ML/NLP and is arXiv-heavy.
-One task setting they do not directly cover is seed-conditioned literature expansion —
-growing a known set of papers from a topic, seed papers, and an existing corpus — which
-would require adaptation rather than direct reuse of any single benchmark.
+Existing benchmarks and systems cover related but different parts of the literature
+review pipeline.
+
+Some benchmarks evaluate clean query-to-paper retrieval. Others focus on Boolean query
+generation for systematic reviews, active-learning screening, citation graph expansion,
+or retrieval-augmented scientific QA. Many strong resources are concentrated in
+biomedical systematic reviews, CS/ML/NLP, or arXiv-heavy corpora. As a result, these
+benchmarks are useful for comparison, but they are not interchangeable.
+
+A recurring gap is the lack of a broad, domain-diverse benchmark for literature search
+expansion: starting from a topic, seed papers, or a partial corpus, and evaluating
+whether a system can discover a comprehensive and diverse set of relevant papers.
 
 ## Note on Snapshots
 
-The upstream benchmark folders (`autoresearch/`, `litsearch-dataset/`,
-`pasa-dataset/`, `scholarquest/`) are point-in-time snapshots of their upstream
-sources. They are not modified here and may differ from the current upstream
-versions.
+The upstream benchmark folders are point-in-time snapshots of their original
+repositories or datasets. They are not modified here and may differ from the current
+upstream versions. For the latest version of each benchmark, please refer to the
+corresponding upstream repository or project page.

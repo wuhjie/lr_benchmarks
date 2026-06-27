@@ -1,58 +1,79 @@
-LR_BENCHMARKS
+# LR_BENCHMARKS
 
-Overview
+## Overview
 
-This repository is an internal benchmark scouting note for CiteClaw-related literature retrieval benchmarks.
+This repository collects and compares existing benchmarks related to literature
+retrieval, scholarly paper search, paper-set discovery, and research-agent evaluation.
+It is intended as a benchmark landscape repository. The goal is to make nearby
+evaluation settings easier to compare, especially in terms of task formulation,
+input/output format, domain coverage, and evaluation style.
 
-It collects four existing benchmarks that are adjacent to literature retrieval, academic paper search, scholarly discovery, and research-agent evaluation:
+This repository does not propose a new benchmark, and the included benchmarks should
+not be treated as direct CiteClaw evaluation benchmarks. It records what has been
+surveyed, how these benchmarks differ, and where they sit relative to a
+CiteClaw-style literature-expansion setting.
 
-* AutoResearchBench
-* LitSearch
-* PaSa
-* ScholarQuest
+## Repository Structure
 
-The purpose of this repository is not to propose a new benchmark, and these benchmarks should not be treated as direct CiteClaw evaluation benchmarks. Instead, this repo records what has been checked, how these benchmarks differ, and why they only partially match the CiteClaw setting.
-
-Repository Structure
-
-'''
+```text
 LR_BENCHMARKS/
-├── autoresearch/        # AutoResearchBench
-├── litsearch-dataset/   # LitSearch dataset
-├── pasa-dataset/        # PaSa dataset
-└── scholarquest/        # ScholarQuest
-'''
+├── autoresearch/         # AutoResearchBench (fetched snapshot)
+├── litsearch-dataset/    # LitSearch (fetched snapshot)
+├── pasa-dataset/         # PaSa (fetched snapshot)
+├── scholarquest/         # ScholarQuest (fetched snapshot)
+├── benchmark_taxonomy.md     # consolidated categorisation of the four benchmarks
+├── benchmark_comparison.md   # detailed per-benchmark comparison + landscape survey
+└── citeclaw_relevance.md     # relation to CiteClaw-style expansion
+```
 
-Each folder contains a fetched copy of the corresponding benchmark repository or dataset. The folders are kept close to their upstream versions.
+Each benchmark folder contains a fetched copy of the corresponding upstream
+repository or dataset, kept close to its upstream version.
 
-Top-level notes:
+## Included Benchmarks
 
-* benchmark_taxonomy.md: task-type and input/output taxonomy.
-* benchmark_comparison.md: detailed comparison across benchmarks.
+| Benchmark | Main focus | Typical input | Typical output |
+| --- | --- | --- | --- |
+| **AutoResearchBench** | Autonomous research-agent evaluation | Research question / condition | Target paper (Deep) or paper set (Wide) |
+| **LitSearch** | Query-to-paper retrieval | Natural-language query | Ranked papers / gold paper IDs |
+| **PaSa** | Comprehensive academic paper search | Scholarly search query | Set of relevant papers |
+| **ScholarQuest** | Paper-search agent / set retrieval | Paper-search query | Set of relevant arXiv IDs |
 
-Benchmark Summary
+## Comparison Documents
 
-Benchmark	Main focus	Typical input	Typical output	Main limitation for CiteClaw
-AutoResearchBench	Autonomous research-agent evaluation	Research question / condition	Target paper or paper set	More agent-task oriented than clean literature expansion
-LitSearch	Query-to-paper retrieval	Natural-language query	Ranked papers / gold paper IDs	Mostly ML/NLP and closed-corpus retrieval
-PaSa	Comprehensive academic paper search	Scholarly search query	Relevant paper set	Closer to paper search, but still not CiteClaw-style seed-paper expansion
-ScholarQuest	Paper-search agent / set retrieval	Scholarly paper-search query	Relevant arXiv IDs	CS/arXiv-heavy and dependent on external search API
+- [`benchmark_taxonomy.md`](benchmark_taxonomy.md) — a single consolidated table that
+  categorises the four benchmarks by task formulation, input/output format, corpus,
+  evaluation style, and domain coverage, with supporting notes.
+- [`benchmark_comparison.md`](benchmark_comparison.md) — detailed per-benchmark
+  comparison, plus a broader landscape survey of adjacent benchmarks, datasets, and
+  systems.
+- [`citeclaw_relevance.md`](citeclaw_relevance.md) — how these benchmarks relate to a
+  CiteClaw-style setting.
 
-Why This Repo Exists
+## Relation to CiteClaw
 
-These benchmarks are grouped together because they represent nearby evaluation settings for literature search, paper retrieval, and research agents. However, they test different things:
+This repository was created while surveying benchmarks relevant to CiteClaw-style
+literature expansion. CiteClaw's target setting is closer to
+topic + seed papers + existing corpus → expanded literature set. The benchmarks
+collected here are relevant because they cover query-to-paper retrieval, scholarly
+search, paper-set retrieval, and research-agent workflows. However, their task
+assumptions are not identical to CiteClaw's setting. Therefore, they are best viewed
+as adjacent resources that can inform evaluation design, rather than as direct
+substitutes for a CiteClaw-specific benchmark. See
+[`citeclaw_relevance.md`](citeclaw_relevance.md) for details.
 
-* LitSearch is closer to query-to-paper retrieval.
-* PaSa and ScholarQuest are closer to academic paper-search agents.
-* AutoResearchBench is closer to autonomous research-agent evaluation.
+## Main Takeaway
 
-This helps clarify that “literature search benchmark” can mean several different tasks.
+The included benchmarks are adjacent but not equivalent. They span a spectrum from
+clean query-to-paper retrieval (LitSearch), through recall-oriented scholarly and
+agentic search (PaSa, ScholarQuest), to autonomous multi-step research
+(AutoResearchBench). Domain coverage is concentrated in CS/ML/NLP and is arXiv-heavy,
+and the task formulation differs from seed-paper-conditioned expansion. As a result,
+they are best viewed as adjacent rather than direct evaluation benchmarks and may
+require adaptation for CiteClaw-style evaluation.
 
-The four benchmarks here are related, but none directly evaluates this full setting.
+## Note on Snapshots
 
-Main gaps:
-
-* limited support for seed-paper-conditioned search;
-* limited corpus-aware expansion;
-* many tasks are CS/ML/NLP or arXiv-heavy;
-* most benchmarks focus on retrieval, paper-set search, or research-agent tasks rather than iterative literature expansion.
+The upstream benchmark folders (`autoresearch/`, `litsearch-dataset/`,
+`pasa-dataset/`, `scholarquest/`) are point-in-time snapshots of their upstream
+sources. They are not modified here and may differ from the current upstream
+versions.

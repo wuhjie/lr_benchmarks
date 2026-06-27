@@ -23,3 +23,6 @@ litsearch-dataset/corpus_s2orc/
 
 # Decrypted AutoResearchBench questions — upstream asks not to repost plaintext Q&A online
 autoresearch/dataset/AutoResearchBench.jsonl
+
+# CiteClaw-specific notes — kept local, not published
+citeclaw_relevance.md

@@ -5,31 +5,47 @@
 The four benchmarks in this repository are related — all of them involve finding scientific
 papers — but they are **not equivalent**. They evaluate different tasks, assume different
 inputs and outputs, and judge success in different ways. Treating them as interchangeable
-"literature search benchmarks" would obscure these differences. This document organises them
-along two axes: by **task type** and by **input/output structure**, and then comments on the
-**evaluation perspectives** they emphasise.
+"literature search benchmarks" would obscure these differences. This document categorises all
+four in a single table along the dimensions that matter for comparison — task formulation,
+input, output, corpus, evaluation style, and domain coverage — and then adds supporting notes
+on the task-type, input/output, and evaluation perspectives. A final section identifies the
+task setting that none of the four directly covers.
 
 The taxonomy is descriptive. Where the source documentation is not explicit, entries are
 written cautiously (for example, "partial" or "unclear").
 
-## Task-Type Taxonomy
+## Consolidated Benchmark Table
 
-| Task type | Description | Typical input | Typical output | Closest benchmark(s) | Fit to CiteClaw-style expansion |
-| --- | --- | --- | --- | --- | --- |
-| Query-to-paper retrieval | Retrieve relevant papers for a query over a fixed corpus | Natural-language query | Retrieved / ranked paper list | LitSearch | Partial — useful as a retrieval sub-component, not for seed-based expansion |
-| Scholarly search / academic QA | Satisfy a scholarly information need through search | Natural-language question | Paper set or answer | PaSa (partial) | Partial — closer to recall-oriented search than to expansion |
-| Paper-search agent | An agent collects a set of relevant papers using search tools | Search query | Set of relevant papers | ScholarQuest, PaSa | Partial-to-moderate — agentic set collection overlaps with expansion |
-| Autonomous research-agent benchmark | Multi-step discovery of a target paper or comprehensive set | Research question / condition | Target paper or paper set, with a search process | AutoResearchBench | Partial — process-oriented, but not seed/corpus-conditioned |
-| Literature expansion / corpus growth | Grow a known set of papers using a topic and seeds against a corpus | Topic + seed papers + existing corpus | Expanded set of related papers | None directly | Closest to CiteClaw — **not directly covered** by any included benchmark |
+| Benchmark | Task type / focus | Input | Output | Corpus / index | Evaluation style | Domain coverage |
+| --- | --- | --- | --- | --- | --- | --- |
+| **AutoResearchBench** | Autonomous research-agent benchmark: multi-step discovery of a target paper (Deep) or comprehensive set (Wide) | Research question / condition description | Target paper (Deep) or paper set (Wide), plus a search trajectory | Live search backend (requires search APIs / keys) | Exact target match (Deep) and set-overlap / IoU (Wide); appears to use model-based judging | Scientific literature; appears multi-domain |
+| **LitSearch** | Query-to-paper retrieval over a fixed corpus | Natural-language query | Ranked papers / gold paper IDs | Fixed, bundled corpus | Standard retrieval / ranking against gold paper IDs | Recent ML and NLP papers (arXiv-heavy) |
+| **PaSa** | Comprehensive academic paper search (agentic) | Scholarly search query (AutoScholarQuery / RealScholarQuery) | Set of relevant papers | Large paper database (data-only copy in this repository) | Recall-oriented set retrieval | Academic papers (arXiv / CS-oriented database) |
+| **ScholarQuest** | Paper-search agent / set retrieval, with controlled query categories | Paper-search query (`final_query`) | Set of relevant arXiv IDs (reported 5–200 per query) | External search API (Lewen) / arXiv; corpus not bundled | Set retrieval against answer ID sets | arXiv papers across taxonomy-derived domains |
 
-The final row corresponds most closely to the CiteClaw setting and is the clearest **gap** in
-the current landscape: none of the four benchmarks is built around topic + seed papers +
-existing corpus as the conditioning input.
+The table groups task formulation, input/output format, corpus, and evaluation style for the four
+benchmarks in one place. The sections below expand on the dimensions that benefit from more
+nuance.
 
-## Input/Output Taxonomy
+## Task-Type Spectrum and the Uncovered Setting
 
-Rows are input or output elements; columns are benchmarks. Values are `yes`, `no`, `partial`,
-or `unclear`, based on the fetched documentation.
+Placing the four benchmarks on a task-type spectrum makes the missing setting explicit:
+
+| Task type | Description | Typical input | Typical output | Closest benchmark(s) |
+| --- | --- | --- | --- | --- |
+| Query-to-paper retrieval | Retrieve relevant papers for a query over a fixed corpus | Natural-language query | Retrieved / ranked paper list | LitSearch |
+| Scholarly search / academic QA | Satisfy a scholarly information need through search | Natural-language question | Paper set or answer | PaSa (partial) |
+| Paper-search agent | An agent collects a set of relevant papers using search tools | Search query | Set of relevant papers | ScholarQuest, PaSa |
+| Autonomous research-agent benchmark | Multi-step discovery of a target paper or comprehensive set | Research question / condition | Target paper or paper set, with a search process | AutoResearchBench |
+| **Seed-conditioned literature expansion** | Grow a known set of papers using a topic and seeds against a corpus | Topic + seed papers + existing corpus | Expanded set of related papers | **None directly** |
+
+The four benchmarks span the first four rows. The final row — expansion conditioned on a topic,
+seed papers, and an existing corpus — is the clearest **gap**: none of the four is built around
+topic + seed papers + existing corpus as the conditioning input.
+
+## Input/Output Detail
+
+Values are `yes`, `no`, `partial`, or `unclear`, based on the fetched documentation.
 
 | Element | AutoResearchBench | LitSearch | PaSa | ScholarQuest |
 | --- | --- | --- | --- | --- |
@@ -46,8 +62,7 @@ or `unclear`, based on the fetched documentation.
 
 Observations:
 
-- **Seed papers as an explicit input** are essentially absent across all four benchmarks; this
-  is central to CiteClaw-style expansion.
+- **Seed papers as an explicit input** are essentially absent across all four benchmarks.
 - **A fixed, well-defined corpus** is clearest in LitSearch; the others either rely on live
   search backends or do not bundle the corpus.
 - **Search trajectories** are an explicit concern mainly in AutoResearchBench (multi-step
@@ -79,6 +94,6 @@ These perspectives are not mutually exclusive, and no single benchmark covers al
 The four benchmarks are **adjacent but not equivalent**. They sit at different points along a
 spectrum from clean query-to-paper retrieval (LitSearch), through recall-oriented scholarly and
 agentic search (PaSa, ScholarQuest), to autonomous multi-step research (AutoResearchBench). The
-literature-expansion task that is central to CiteClaw — conditioning on a topic, seed papers,
-and an existing corpus — is not directly represented, and would require adaptation rather than
-direct reuse.
+setting that is not directly represented is **seed-conditioned literature expansion** —
+conditioning on a topic, seed papers, and an existing corpus to grow a known set — which would
+require adaptation rather than direct reuse of any single benchmark.

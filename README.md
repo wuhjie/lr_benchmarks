@@ -1,4 +1,5 @@
-# LR_BENCHMARKS
+# Literature Retrieval Landscape
+<!-- literature-retrieval-landscape -->
 
 ## Overview
 
@@ -26,12 +27,13 @@ QA benchmarks, and adjacent literature-review products.
 
 ```text
 LR_BENCHMARKS/
-├── autoresearch/              # AutoResearchBench fetched snapshot
-├── litsearch-dataset/         # LitSearch fetched snapshot
-├── pasa-dataset/              # PaSa fetched snapshot
-├── scholarquest/              # ScholarQuest fetched snapshot
-├── benchmark_taxonomy.md      # concise taxonomy of the four bundled benchmarks
-└── benchmark_comparison.md    # detailed comparison + broader landscape survey
+├── benchmarks/                    # fetched benchmark snapshots
+│   ├── autoresearch/              # AutoResearchBench fetched snapshot
+│   ├── litsearch-dataset/         # LitSearch fetched snapshot
+│   ├── pasa-dataset/              # PaSa fetched snapshot
+│   └── scholarquest/              # ScholarQuest fetched snapshot
+├── benchmark_taxonomy.md          # concise taxonomy of the four bundled benchmarks
+└── benchmark_comparison.md        # detailed comparison + broader landscape survey
 ```
 
 The fetched benchmark folders are kept close to their upstream versions. The added

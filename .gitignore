@@ -11,18 +11,18 @@ venv/
 .claude/settings.local.json
 
 # HuggingFace download cache
-pasa-dataset/.cache/
+benchmarks/pasa-dataset/.cache/
 
 # Large dataset blob — exceeds GitHub 100MB limit (2.3GB)
-pasa-dataset/paper_database/cs_paper_2nd.zip
+benchmarks/pasa-dataset/paper_database/cs_paper_2nd.zip
 
 # LitSearch HF cache + large corpus parquet shards (>100MB each)
-litsearch-dataset/.cache/
-litsearch-dataset/corpus_clean/
-litsearch-dataset/corpus_s2orc/
+benchmarks/litsearch-dataset/.cache/
+benchmarks/litsearch-dataset/corpus_clean/
+benchmarks/litsearch-dataset/corpus_s2orc/
 
 # Decrypted AutoResearchBench questions — upstream asks not to repost plaintext Q&A online
-autoresearch/dataset/AutoResearchBench.jsonl
+benchmarks/autoresearch/dataset/AutoResearchBench.jsonl
 
 # CiteClaw-specific notes — kept local, not published
 citeclaw_relevance.md
